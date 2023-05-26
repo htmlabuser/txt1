@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>001</title>
+</head>
+<body>
+
+AWS Glue Data Quality - AWS GlueAWS Glue Data Quality - AWS GlueAWSDocumentationAWS GlueDeveloper GuideBenefits and key featuresHow it worksConsiderationsTerminologyRelease notes for AWS Glue Data QualityAWS Glue Data QualityAWS Glue Data Quality allows you to measure and monitor the quality of your data so that you can make
+        good business decisions. Built on top of the open-source DeeQu framework, AWS Glue Data Quality provides a
+        managed, serverless experience. AWS Glue Data Quality works with Data Quality Definition Language (DQDL),
+        which is a domain specific language that you use to define data quality rules. To learn more
+        about DQDL and supported rule types, see Data Quality Definition Language (DQDL) reference.For additional product details and pricing, see the service page for AWS Glue Data Quality.
+Benefits and key features
+
+
+
+Serverless - there is no installation, patching or maintenance.
+
+
+
+Get started quickly - AWS Glue Data Quality quickly analyzes your data and creates data quality rules for you.
+                    You can get started with two clicks: "Create Data Quality Rules -> Recommend rules".
+
+
+
+Improvise your rules - with 25+ out-of-the-box DQ rules to start from, you can create rules
+                    that suit your specific needs.
+
+
+
+Evaluate quality and make confident business decisions - Once you evaluate the rules,
+                    you get a Data Quality score that provides an overview of the health of your data.
+                    Use Data Quality score to make confident business decisions.
+
+
+
+Zero in on bad data - AWS Glue Data Quality helps you identify the exact records that caused your
+                    quality scores to go down. Easily identify them, quarantine and fix them.
+
+
+
+Pay as you go - There are no annual licenses you need to use AWS Glue Data Quality
+
+
+
+No lock-in - AWS Glue Data Quality is built on open source DeeQu, allowing you to keep the rules you are
+                    authoring in an open language.
+
+
+
+Data quality checks - AWS Glue Data Quality You can enforce data quality checks on Data Catalog
+                    and AWS Glue ETL pipelines allowing you to manage data quality at rest and in transit.
+
+
+How it works
+There are two entry points for AWS Glue Data Quality: the AWS Glue Data Catalog and AWS Glue ETL jobs. This
+            section provides an overview of the use cases and AWS Glue features that each entry point
+            supports.
+Data
+                    quality for the AWS Glue Data Catalog
+AWS Glue Data Quality evaluates objects that are stored in the AWS Glue Data Catalog It offers non-coders an easy way to set up data quality rules.
+These personas include data stewards and business analysts.
+You might choose this option for the following use cases:
+
+
+You want to perform data quality tasks on data sets that you've already
+                        cataloged in the AWS Glue Data Catalog.
+
+You work on data governance and need to identify or evaluate data quality
+                        issues in your data lake on an ongoing basis.
+
+You can manage data quality for the Data Catalog using the following interfaces:
+
+
+The AWS Glue management console
+
+AWS Glue APIs
+
+To get started with AWS Glue Data Quality for the AWS Glue Data Catalog see Getting started with
+            AWS Glue Data Quality for the Data Catalog.
+Data quality for AWS Glue ETL jobs
+AWS Glue Data Quality for AWS Glue ETL jobs lets you perform proactive data quality tasks. Proactive tasks help you identify and
+                filter out bad data before you load a data set
+                into your data lake.
+
+
+
+You might choose data quality for ETL jobs for the following use cases:
+
+
+You want to incorporate data quality tasks into your ETL jobs
+
+You want to write code that defines data quality tasks in ETL
+                        scripts
+
+You want to manage the quality of data that flows in your visual data
+                        pipelines
+
+You can manage data quality for ETL jobs using the following interfaces:
+
+
+AWS Glue Studio, AWS Glue Studio notebooks, and AWS Glue interactive sessions
+
+AWS Glue libraries for ETL scripting
+
+AWS Glue APIs
+
+To get started with data quality for ETL jobs, see Tutorial: Getting started with
+                    Data Quality in the AWS Glue Studio User
+                Guide.
+Comparing data quality for the Data Catalog
+                    to data quality for ETL jobs
+This table provides an overview of features that each entry point for AWS Glue Data Quality
+                supports.
+
+
+Feature
+Data quality for the Data Catalog
+Data quality for ETL jobs
+
+
+
+Data sources
+Amazon S3, Amazon Redshift, JDBC sources compatible with the Data Catalog, and transactional data lake formats such as Apache Iceberg, Apache Hudi, and Delta Lake.
+All data sources supported by AWS Glue, including custom connectors
+                                and third-party connectors.
+
+
+Data Quality rule recommendations
+Supported
+Not supported
+
+
+Author and run DQDL rules
+Supported
+Supported
+
+
+Auto scaling
+Not supported
+Supported
+
+
+AWS Glue Flex support
+Not supported
+Supported
+
+
+Scheduling
+Supported when evaluating Data Quality rules and via Step Functions.
+Supported when using Step Functions and workflows.
+
+
+Identifying records that failed data quality checks
+Not supported
+Supported
+
+
+Integration with Amazon Eventbridge
+Supported
+Supported
+
+
+Integration with AWS Cloudwatch
+Supported
+Supported
+
+
+Writing data quality results to Amazon S3
+Supported
+Supported
+
+
+Incremental data quality
+Supported via pushdown predicates
+Supported via AWS Glue bookmarks
+
+
+AWS CloudFormation support
+Supported
+Supported
+
+
+Considerations
+Consider the following items before you use AWS Glue Data Quality.
+
+
+Data quality rules can't evaluate nested or list-type data sources.
+
+Terminology
+
+The following list defines terms that are related to AWS Glue Data Quality.
+
+Data Quality Definition Language (DQDL)
+
+A domain-specific language that you can use to write AWS Glue Data Quality rules.
+To learn more about DQDL, see the Data Quality Definition Language (DQDL) reference guide.
+
+data quality
+
+Describes how well a dataset serves its specific purpose. AWS Glue Data Quality
+                        evaluates rules against a dataset to measure data quality. Each rule checks
+                        for particular characteristics like data freshness or integrity. To quantify
+                        data quality, you can use a data quality
+                            score.
+
+data quality score
+
+The percentage of data quality rules that pass (result in true) when you
+                        evaluate a ruleset with AWS Glue Data Quality.
+
+rule
+
+A DQDL expression that checks your data for a specific characteristic and
+                        returns a Boolean value. For more information, see Rule structure.
+
+ruleset
+
+An AWS Glue resource that comprises a set of data quality rules. A ruleset
+                        must be associated with a table in the AWS Glue Data Catalog. When you save a ruleset,
+                        AWS Glue assigns an Amazon Resource Name (ARN) to the ruleset.
+
+
+Release notes for AWS Glue Data Quality
+This topic describes features introduced in AWS Glue Data Quality.
+General availability: new features
+The following new features are available with the general availability of AWS Glue Data Quality:
+
+The ability to identify which records failed data quality checks is now supported in AWS Glue StudioNew data quality ruletypes such as validating referential integrity of data between two data sets, comparing data between two datasets, and data type checksImproved user experience in the AWS Glue Data CatalogSupport for Apache Iceberg, Apache Hudi and Delta LakeSupport for Amazon RedshiftSimplified notification with Amazon EventbridgeAWS CloudFormation support for creating rulesetsPerformance improvements: caching option in ETL and AWS Glue Studio for faster performance when evaluating data quality
+ Javascript is disabled or is unavailable in your browser.To use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.Document ConventionsLogging using CloudTrailIAM permissions for AWS Glue Data QualityDid this page help you? - YesThanks for letting us know we're doing a good job!If you've got a moment, please tell us what we did right so we can do more of it.Did this page help you? - NoThanks for letting us know this page needs work. We're sorry we let you down.If you've got a moment, please tell us how we can make the documentation better.
+
+</body>
+</html>
